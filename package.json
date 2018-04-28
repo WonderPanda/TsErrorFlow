@@ -1,15 +1,18 @@
 {
-  "name": "ts-either",
-  "version": "0.0.1",
+  "name": "ts-errorflow",
+  "version": "1.0.0",
   "description": "A simple zero dependency TypeScript empowered implementation of an Either construct for improved control flow and error handling",
   "main": "dist/index",
   "typings": "dist/index",
   "author": "Jesse Carter",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/WonderPanda/TsErrorFlow"
+  },
   "scripts": {
     "build": "tsc",
     "test": "jest",
-    "test:e2e": "jest --config ./src/test/jest-e2e.json --forceExit",
     "test:coverage": "jest --coverage"
   },
   "devDependencies": {

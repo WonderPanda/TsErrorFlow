@@ -31,11 +31,11 @@ export function isError<T, U extends {}>(either: T | U): either is U {
  */
 export function makeError<T extends object>(failureObj: T) : T & IError {
     const error = <T & IError>{};
-    error.either_error_symbol = EitherErrorSymbol;
-
+    
     for (let x in failureObj) {
         error[x] = (failureObj as any)[x];
     }
 
+    error.either_error_symbol = EitherErrorSymbol;
     return error;
 }
