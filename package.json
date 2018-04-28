@@ -1,0 +1,35 @@
+{
+  "name": "ts-either",
+  "version": "0.0.1",
+  "description": "A simple zero dependency TypeScript empowered implementation of an Either construct for improved control flow and error handling",
+  "main": "dist/index",
+  "typings": "dist/index",
+  "author": "Jesse Carter",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "test:e2e": "jest --config ./src/test/jest-e2e.json --forceExit",
+    "test:coverage": "jest --coverage"
+  },
+  "devDependencies": {
+    "@types/jest": "^22.2.3",
+    "jest": "^22.4.3",
+    "ts-jest": "^22.4.4",
+    "typescript": "^2.8.3"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  }
+}
