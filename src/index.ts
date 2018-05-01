@@ -1,7 +1,7 @@
-export const EitherErrorSymbol = Symbol('EitherError');
+export const AnErrorSymbol = Symbol('AnErrorSymbol');
 
-export interface IError {
-    either_error_symbol: Symbol;
+export type IError = {
+    [AnErrorSymbol]?: Symbol;
 }
 
 /**
@@ -12,10 +12,9 @@ export interface IError {
  * the actual available properties of the underyling object to be accessed
  * @param either An object that can represent either a failure of some success payload
  */
-export function isError<T, U extends {}>(either: T | U): either is U {
-    const candidateFailure = either as any;
-    if (candidateFailure.either_error_symbol) {
-        return candidateFailure.either_error_symbol === EitherErrorSymbol;
+export function isError<T, U>(either: T | U): either is U {
+    if ((either as IError)[AnErrorSymbol]) {
+        return (either as any)[AnErrorSymbol] === AnErrorSymbol;
     }
 
     return false;
@@ -36,6 +35,6 @@ export function makeError<T extends object>(failureObj: T) : T & IError {
         error[x] = (failureObj as any)[x];
     }
 
-    error.either_error_symbol = EitherErrorSymbol;
+    error[AnErrorSymbol] = AnErrorSymbol;
     return error;
 }

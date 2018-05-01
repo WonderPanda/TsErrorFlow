@@ -1,15 +1,10 @@
-import { isError, makeError, IError } from './index';
+import { isError, makeError, IError, AnErrorSymbol } from './index';
 
 interface SuccessData {
     message: string;   
 }
 
-interface IErrorLike {
-    someData: number;
-    either_error_symbol: string | symbol;
-}
-
-describe('Either', () => {    
+describe('CoreFunctions', () => {    
     it('should be able to convert any object into one which represents an error', () => {
         const successLike: SuccessData = {
             message: 'this looks like success'
@@ -21,25 +16,13 @@ describe('Either', () => {
         expect(result).toBe(true);
     });
 
-    describe('should rely on the proper error symbol to differentiate actual errors', () => {
-        it('should not generate false positives for strings', () => {
-            const errorLike: IErrorLike = {
-                someData: 42,
-                either_error_symbol: 'looks like error'
-            };
-    
-            const result = isError<SuccessData, IErrorLike>(errorLike);
-            expect(result).toBe(false); 
-        });
+    it('should not generate false positives for symbols (aka symbols do what they say they do)', () => {
+        const errorLike = {
+            someData: 42,
+            AnErrorSymbol: Symbol('AnErrorSymbol')
+        };
 
-        it('should not generate false positives for symbols', () => {
-            const errorLike: IErrorLike = {
-                someData: 42,
-                either_error_symbol: Symbol('ErrorSymbol')
-            };
-    
-            const result = isError<SuccessData, IErrorLike>(errorLike);
-            expect(result).toBe(false); 
-        });
+        const result = isError<SuccessData, {}>(errorLike);
+        expect(result).toBe(false); 
     });
 });

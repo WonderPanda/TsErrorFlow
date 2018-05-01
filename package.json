@@ -1,6 +1,6 @@
 {
   "name": "ts-errorflow",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A simple zero dependency TypeScript empowered implementation of an Either construct for improved control flow and error handling",
   "main": "dist/index",
   "typings": "dist/index",
