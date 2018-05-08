@@ -1,8 +1,10 @@
-export const AnErrorSymbol = Symbol('AnErrorSymbol');
+export const AnError = Symbol('AnErrorSymbol');
 
 export type IError = {
-    [AnErrorSymbol]?: Symbol;
+    AnError?: Symbol;
 }
+
+
 
 /**
  * Checks an object to verify whether it represents a failure. Will return true if the checked object
@@ -12,11 +14,12 @@ export type IError = {
  * the actual available properties of the underyling object to be accessed
  * @param either An object that can represent either a failure of some success payload
  */
-export function isError<T, U>(either: T | U): either is U {
-    if ((either as IError)[AnErrorSymbol]) {
-        return (either as any)[AnErrorSymbol] === AnErrorSymbol;
+export function isError<T, U extends object>(either: T | U): either is U {
+    const potentialError = <IError>either; 
+    if (potentialError.AnError) {
+        return potentialError.AnError === AnError;
     }
-
+    
     return false;
 }
 
@@ -35,6 +38,6 @@ export function makeError<T extends object>(failureObj: T) : T & IError {
         error[x] = (failureObj as any)[x];
     }
 
-    error[AnErrorSymbol] = AnErrorSymbol;
+    error.AnError = AnError;
     return error;
 }

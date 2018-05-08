@@ -1,4 +1,4 @@
-import { isError, makeError, IError, AnErrorSymbol } from './index';
+import { isError, makeError, IError, AnError } from './index';
 
 interface SuccessData {
     message: string;   
