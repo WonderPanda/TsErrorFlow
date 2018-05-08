@@ -3,6 +3,11 @@ A one file, zero-dependency library for improved control flow and error handling
 
 TsErrorFlow leverages [Union Types, Intersection Types, and User-Defined Type Guards](http://www.typescriptlang.org/docs/handbook/advanced-types.html) to provide an intuitive and type safe developer experience for error handling.
 
+<div align="center">
+	<a href="https://travis-ci.org/WonderPanda/TsErrorFlow">
+		<img src="https://travis-ci.org/WonderPanda/TsErrorFlow.svg?branch=master">
+	</a>
+</div>
 
 # Usage
 TsErrorFlow allows you to represent the potential errors in your application domain using plain old javascript objects. This makes it easier to follow a more explicit coding style in which relevant information about things that went wrong can be passed simply and acted on, instead of relying on throwing Errors for control flow:
